@@ -522,9 +522,9 @@ int main(int argc, char** argv) {
     }
     ifstream in(argv[1], ios::binary);
     if (!in) {
-        cerr << "Cannot open file\n";
-        return 1;
-    }
+    cerr << "Cannot open file: " << argv[1] << "\n";
+    return 1;
+}
     string source((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
     Lexer lexer(source, argv[1]);
     lexer.scan();
