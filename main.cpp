@@ -524,8 +524,12 @@ int main(int argc, char** argv) {
     if (!in) {
     cerr << "Cannot open file: " << argv[1] << "\n";
     return 1;
-}
+    }
     string source((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
+    if (source.empty()) {
+    cerr << "Empty source file: " << argv[1] << "\n";
+    return 1;
+    }
     Lexer lexer(source, argv[1]);
     lexer.scan();
     Parser parser(lexer.tokens, argv[1]);
