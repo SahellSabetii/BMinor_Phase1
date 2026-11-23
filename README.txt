@@ -25,3 +25,12 @@ Other input examples:
 
 The program returns 0 for a valid input and 2 when there are errors.
 Grammar rules and token patterns are in grammar.ebnf.
+
+
+Testing:
+Run the following commands to check valid and invalid inputs:
+
+./bminor tests/valid.bminor
+./bminor tests/invalid.bminor
+
+Check tokens.txt, ast.txt, and errors.txt after each run.
