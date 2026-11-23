@@ -516,7 +516,7 @@ void printAnsi(const vector<Token>& tokens, const map<int,string>& roles) {
 }
 
 int main(int argc, char** argv) {
-    if (argc < 2) {
+    if (argc != 2) {
         cerr << "Usage: ./bminor source.bminor\n";
         return 1;
     }
