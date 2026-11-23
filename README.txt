@@ -34,3 +34,13 @@ Run the following commands to check valid and invalid inputs:
 ./bminor tests/invalid.bminor
 
 Check tokens.txt, ast.txt, and errors.txt after each run.
+Project Overview
+
+This project implements Phase 1 of a B-Minor compiler in C++17.
+
+Features:
+- Lexical analysis and token generation
+- Syntax analysis and AST generation
+- Lexical and syntax error reporting
+- Source code highlighting in HTML and terminal
+- Support for valid and invalid input files
