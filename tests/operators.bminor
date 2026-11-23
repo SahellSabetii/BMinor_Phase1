@@ -1,0 +1,8 @@
+main: function integer () = {
+    a_b: integer = 13;
+    x2: boolean = true;
+    a_b++;
+    a_b--;
+    if (a_b <= 20 && a_b != 0 || false) print "ok", '\n';
+    return a_b ^ 2;
+}

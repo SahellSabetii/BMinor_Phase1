@@ -1,0 +1,4 @@
+main: function integer () = {
+    print "OK";
+    return 0;
+}

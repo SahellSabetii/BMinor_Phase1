@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="UTF-8">
+<title>B-Minor</title><style>body{background:#f7f8fa;padding:26px;}pre{font:15px/1.5 Consolas,monospace;background:white;padding:22px;white-space:pre-wrap;border:1px solid #ddd;}.kw{color:#1854c1;font-weight:bold}.type{color:#7d3ca8}.lit{color:#b05216}.fn{color:#176c68;font-weight:bold}.var{color:#262626}.comment{color:#718080}.op{color:#ab2673}.bad{background:#ffd7d7;color:#c20f0f}</style></head><body><pre><span class="fn">square</span>: <span class="kw">function</span> <span class="type">integer</span> (<span class="var">x</span>: <span class="type">integer</span>) <span class="op">=</span> {
+    <span class="kw">return</span> <span class="var">x</span> <span class="op">^</span> <span class="lit">2</span>;
+}
+
+<span class="fn">printarray</span>: <span class="kw">function</span> <span class="type">void</span> (<span class="var">a</span>: <span class="type">array</span> [] <span class="type">integer</span>, <span class="var">size</span>: <span class="type">integer</span>) <span class="op">=</span> {
+    <span class="var">i</span>: <span class="type">integer</span>;
+    <span class="kw">for</span> (<span class="var">i</span> <span class="op">=</span> <span class="lit">0</span>; <span class="var">i</span> <span class="op">&lt;</span> <span class="var">size</span>; <span class="var">i</span><span class="op">++</span>) {
+        <span class="kw">print</span> <span class="var">a</span>[<span class="var">i</span>], <span class="lit">&quot;\n&quot;</span>;
+    }
+}
+
+<span class="fn">main</span>: <span class="kw">function</span> <span class="type">integer</span> () <span class="op">=</span> {
+    <span class="var">nums</span>: <span class="type">array</span> [<span class="lit">3</span>] <span class="type">integer</span> <span class="op">=</span> {<span class="lit">1</span>, <span class="lit">2</span>, <span class="lit">3</span>};
+    <span class="var">x</span>: <span class="type">integer</span> <span class="op">=</span> <span class="lit">4</span>;
+    <span class="var">msg</span>: <span class="type">string</span> <span class="op">=</span> <span class="lit">&quot;B-Minor test\n&quot;</span>;
+    <span class="kw">if</span> (<span class="var">x</span> <span class="op">&gt;=</span> <span class="lit">2</span> <span class="op">&amp;&amp;</span> <span class="lit">true</span>) {
+        <span class="kw">print</span> <span class="var">msg</span>, <span class="fn">square</span>(<span class="var">x</span>), <span class="lit">&#39;\n&#39;</span>;
+    } <span class="kw">else</span> {
+        <span class="var">x</span> <span class="op">=</span> <span class="lit">0</span>;
+    }
+    <span class="fn">printarray</span>(<span class="var">nums</span>, <span class="lit">3</span>);
+    <span class="kw">return</span> <span class="lit">0</span>;
+}
+</pre></body></html>

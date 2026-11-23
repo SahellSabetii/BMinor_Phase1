@@ -1,0 +1,23 @@
+square: function integer (x: integer) = {
+    return x ^ 2;
+}
+
+printarray: function void (a: array [] integer, size: integer) = {
+    i: integer;
+    for (i = 0; i < size; i++) {
+        print a[i], "\n";
+    }
+}
+
+main: function integer () = {
+    nums: array [3] integer = {1, 2, 3};
+    x: integer = 4;
+    msg: string = "B-Minor test\n";
+    if (x >= 2 && true) {
+        print msg, square(x), '\n';
+    } else {
+        x = 0;
+    }
+    printarray(nums, 3);
+    return 0;
+}

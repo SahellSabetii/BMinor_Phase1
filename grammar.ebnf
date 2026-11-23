@@ -1,0 +1,63 @@
+B-Minor grammar (EBNF)
+
+program        = { declaration } EOF ;
+declaration    = identifier ":" ( function_decl | variable_decl ) ;
+variable_decl  = type [ "=" initializer ] ";" ;
+function_decl  = "function" return_type "(" [ parameters ] ")" ( ";" | "=" block ) ;
+parameters     = parameter { "," parameter } ;
+parameter      = identifier ":" type ;
+return_type    = atomic_type | "void" ;
+type           = atomic_type | "array" "[" [ expression ] "]" type ;
+atomic_type    = "integer" | "boolean" | "char" | "string" ;
+initializer    = expression ;
+
+block          = "{" { declaration | statement } "}" ;
+statement      = block
+               | "return" [ expression ] ";"
+               | "print" [ expression { "," expression } ] ";"
+               | "if" "(" expression ")" statement [ "else" statement ]
+               | "for" "(" [ expression ] ";" [ expression ] ";" [ expression ] ")" statement
+               | [ expression ] ";" ;
+
+expression     = assignment ;
+assignment     = logic_or [ "=" assignment ] ;
+logic_or       = logic_and { "||" logic_and } ;
+logic_and      = equality { "&&" equality } ;
+equality       = comparison { ( "==" | "!=" ) comparison } ;
+comparison     = addition { ( "<" | "<=" | ">" | ">=" ) addition } ;
+addition       = multiplication { ( "+" | "-" ) multiplication } ;
+multiplication = power { ( "*" | "/" | "%" ) power } ;
+power          = unary [ "^" power ] ;
+unary          = ( "!" | "-" ) unary | postfix ;
+postfix        = primary { "(" [ arguments ] ")" | "[" expression "]" | "++" | "--" } ;
+arguments      = expression { "," expression } ;
+primary        = identifier | integer_literal | boolean_literal | char_literal
+               | string_literal | "(" expression ")" | array_initializer ;
+array_initializer = "{" [ expression { "," expression } [ "," ] ] "}" ;
+
+boolean_literal = "true" | "false" ;
+
+Token descriptions
+
+letter         = [A-Za-z]
+digit          = [0-9]
+identifier     = [A-Za-z_][A-Za-z0-9_]*
+integer       = [0-9]+
+string         = \"(\\.|[^\"\\\r\n])*\"
+character      = '(\\.|[^'\\\r\n])'
+line_comment   = //[non-newline]*
+block_comment  = /\\* ... first occurrence of *\\/
+space          = [ \\t\\r\\n]+
+operators      = == != <= >= && || ++ -- + - * / % ^ = ! < >
+delimiters     = ( ) [ ] { } ; , :
+keywords       = array boolean char else false for function if integer print return string true void while
+
+The longest token is consumed first. A keyword has priority over an identifier
+of the same length. Whitespace and comments do not enter the parser. Each
+non-ignored token has its original spelling, file, line and column.
+
+Parsing approach: recursive descent, with loops instead of left recursion.
+Expressions use precedence levels and right-associative assignment and exponentiation.
+An AST node stores its kind, starting location and a type field left empty for
+later semantic analysis. Unrecognized characters become INVALID tokens.
+The parser skips unexpected tokens to ;, }, if, for, print or return.

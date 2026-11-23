@@ -1,0 +1,7 @@
+main: function integer () = {
+    x: integer = 2;
+    y: integer = 3;
+    x = x @ y;
+    print "broken string
+    return 1;
+    /* comment without end

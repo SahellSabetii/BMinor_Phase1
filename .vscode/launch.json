@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/sahelsabeti/Downloads/BMinor_Phase1",
+      "program": "/Users/sahelsabeti/Downloads/BMinor_Phase1/build/Debug/outDebug"
+    }
+  ]
+}
