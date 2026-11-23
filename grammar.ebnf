@@ -61,3 +61,9 @@ Expressions use precedence levels and right-associative assignment and exponenti
 An AST node stores its kind, starting location and a type field left empty for
 later semantic analysis. Unrecognized characters become INVALID tokens.
 The parser skips unexpected tokens to ;, }, if, for, print or return.
+
+(* Grammar Notes
+   This file defines the syntax of the B-Minor language.
+   The parser implementation is located in main.cpp.
+   Lexical analysis recognizes tokens before parsing.
+*)
